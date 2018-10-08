@@ -7,7 +7,7 @@
               <span class="avatar-html" v-html="user.avatarHtml"></span>
             </td>
             <td v-else style="text-align: center;"><img :src="user.imageUrl" class="img-msg"/></td>
-            <td>{{user.name}}</td>
+            <td class="user">{{user.name}}</td>
         </tr>
       </tbody>
   </table>
