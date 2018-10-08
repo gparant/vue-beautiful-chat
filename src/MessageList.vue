@@ -1,6 +1,6 @@
 <template>
   <div class="sc-message-list" ref="scrollList" :style="{backgroundColor: colors.messageList.bg}">
-    <Message v-for="(message, idx) in messages" :message="message" :chatImageUrl="chatImageUrl(message.author)" :authorName="authorName(message.author)" :key="idx" :colors="colors" />
+    <Message v-for="(message, idx) in messages" :message="message" :chatImageUrl="chatImageUrl(message.author)" :authorName="authorName(message.author)" :avatarHtml="chatImageUrl(message.author)" :key="idx" :colors="colors" />
     <Message v-show="showTypingIndicator !== ''" :message="{author: showTypingIndicator, type: 'typing'}" :chatImageUrl="chatImageUrl(showTypingIndicator)" :colors="colors" />
   </div>
 </template>
@@ -45,14 +45,17 @@ export default {
       const profile = this.participants.find(profile => profile.id === author)
 
       // A profile may not be found for system messages or messages by 'me'
-      return profile || {imageUrl: '', name: ''}
+      return profile || {imageUrl: '', name: '', avatarHtml: ''};
     },
     chatImageUrl(author) {
-      return this.profile(author).imageUrl
+      return this.profile(author).imageUrl;
     },
     authorName(author) {
-      return this.profile(author).name
-    }
+      return this.profile(author).name;
+    },
+    chatImageUrl(author) {
+      return this.profile(author).avatarHtml;
+    },
   },
   computed: {
     defaultChatIcon() {
