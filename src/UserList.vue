@@ -38,12 +38,8 @@ export default {
   table {
     width: 100%;
   }
-  td.avatar{
+  .avatar{
     padding-left: 20px;
     width: 20%;
-  }
-  td{
-    text-align: left;
-    vertical-align: middle;
   }
 </style>
