@@ -35,11 +35,4 @@ export default {
     width: 50px;
     margin-right: 5px;
   }
-  table {
-    width: 100%;
-  }
-  .avatar{
-    padding-left: 20px;
-    width: 20%;
-  }
 </style>
