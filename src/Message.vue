@@ -5,7 +5,10 @@
         received: message.author !== 'me' && message.type !== 'system',
         system: message.type === 'system'
       }">
-      <div v-if="message.type !== 'system'" :title="authorName" class="sc-message--avatar" :style="{
+      <div v-if="message.author !== 'me' && avatarHtml">
+        <span v-html="avatarHtml"></span>
+      </div>
+      <div v-else-if="message.type !== 'system'" :title="authorName" class="sc-message--avatar" :style="{
         backgroundImage: `url(${chatImageUrl})`
       }" v-tooltip="message.author"></div>
       <TextMessage v-if="message.type === 'text'" :data="message.data" :messageColors="determineMessageColors()" />
@@ -53,6 +56,10 @@ export default {
     },
     authorName: {
       type: String
+    },
+    avatarHtml: {
+      type: String,
+      default: null
     }
   },
   methods: {
